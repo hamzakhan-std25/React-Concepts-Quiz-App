@@ -4,7 +4,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Layout from "./pages/Layout";
+import Layout from "./pages/layout";
 import Quiz from "./pages/Quiz_page";
 import AddQuiz from "./pages/AddQuiz";
 import PreviousQuizzes from "./pages/Results";
