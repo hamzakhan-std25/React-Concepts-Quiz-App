@@ -33,13 +33,18 @@ const Layout = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        setProfile({
-            username: localStorage.getItem('username') || 'Guest',
-            email: localStorage.getItem('email') || 'Not set',
-            joinDate: localStorage.getItem('joinDate') || 'N/A',
-            isLoggedIn: localStorage.getItem('isLoggedIn') === 'true'
-        });
-    }, [localStorage.getItem('isLoggedIn'), localStorage.getItem('username'), localStorage.getItem('email'), localStorage.getItem('joinDate')]);
+        const updateProfile = () => {
+            setProfile({
+                username: localStorage.getItem('username') || 'Guest',
+                email: localStorage.getItem('email') || 'Not set',
+                joinDate: localStorage.getItem('joinDate') || 'N/A',
+                isLoggedIn: localStorage.getItem('isLoggedIn') === 'true'
+            });
+        };
+        updateProfile();
+        window.addEventListener('storage', updateProfile);
+        return () => window.removeEventListener('storage', updateProfile);
+    }, []);
 
     const handleLoginClick = () => {
         setNavOpen(false);
