@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 // import ProtectedRoute from "./pages/ProtectedRoute";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
@@ -11,17 +10,6 @@ import PreviousQuizzes from "./pages/Results";
 
 function App() {
 
-  const [isAuth, setIsAuth] = useState(false);
-
-  useEffect(() => {
-    const checkAuth = () => {
-      const loggedIn = localStorage.getItem("isLoggedIn");
-      setIsAuth(loggedIn === "true");
-    };
-    checkAuth();
-    window.addEventListener("storage", checkAuth);
-    return () => window.removeEventListener("storage", checkAuth);
-  }, []);
 
   // If you want to protect routes, you can use a ProtectedRoute component
 
@@ -31,13 +19,13 @@ function App() {
       <Route
         path="/"
         element={
-          <ProtectedRoute isAuth={isAuth}>
+          <ProtectedRoute>
             <Layout />
           </ProtectedRoute>
         }
       >
-
-        <Route index element={<Home />} />
+  
+        <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/add-quiz" element={<AddQuiz />} />
         <Route path="/results" element={<PreviousQuizzes />} />

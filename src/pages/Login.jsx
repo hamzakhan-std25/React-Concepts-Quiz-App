@@ -1,6 +1,5 @@
 // src/components/Login.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
@@ -10,7 +9,6 @@ export default function Login() {
     password: ""
   });
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -39,6 +37,7 @@ export default function Login() {
         style={{ minWidth: 320, maxWidth: 400, width: "100%" }}
       >
         <h2 className="mb-4 text-center">Sign In</h2>
+        <h2 className="mb-4 text-danger text-center">Use random data it's just for testing...</h2>
         <div className="mb-3">
           <label className="form-label">Username</label>
           <input
